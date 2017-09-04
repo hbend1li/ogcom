@@ -1,0 +1,153 @@
+[
+  {
+    "item": "Tableau de bord",
+    "icon": "dashboard",
+    "sub_item": [
+      {
+        "item": "Accueille",
+        "icon": "home",
+        "url": "#!/"
+      }
+    ]
+  },
+  {
+    "item": "Contacts",
+    "icon": "address book outline",
+    "sub_item": [
+      {
+        "item": "List des contacts",
+        "icon": "address card outline",
+        "url": "#!/contacts_list"
+      },
+      {
+        "item": "Nouveau contact",
+        "icon": "plus",
+        "url": "#!/contact/0"
+      }
+    ]
+  },
+  {
+    "item": "Produit",
+    "icon": "shop",
+    "sub_item": [
+      {
+        "item": "Stock",
+        "icon": "cubes",
+        "url": "#!/stock"
+      },
+      {
+        "item": "List des produits",
+        "icon": "archive",
+        "url": "#!/product_list"
+      },
+      {
+        "item": "Nouveau produit",
+        "icon": "plus",
+        "url": "#!/product/0"
+      },
+      {
+        "item": "Garantie",
+        "icon": "recycle",
+        "url": "#!/new_product"
+      }
+    ]
+  },
+  {
+    "item": "Achat",
+    "icon": "shopping basket",
+    "sub_item": [
+      {
+        "item": "Bon de command",
+        "icon": "file text",
+        "url": "#!/stock"
+      },
+      {
+        "item": "Facture preformat",
+        "icon": "file text",
+        "url": "#!/stock"
+      },
+      {
+        "item": "Facture",
+        "icon": "file text",
+        "url": "#!/list_product"
+      },
+      {
+        "item": "Bon de livraison",
+        "icon": "file text",
+        "url": "#!/new_product"
+      }
+    ]
+  },
+  {
+    "item": "Vente",
+    "icon": "shopping bag",
+    "sub_item": [
+      {
+        "item": "Bon de command",
+        "icon": "file text",
+        "url": "#!/new_product"
+      },
+      {
+        "item": "Facture",
+        "icon": "file text",
+        "url": "#!/stock"
+      },
+      {
+        "item": "Bon de livraison",
+        "icon": "file text",
+        "url": "#!/new_product"
+      },
+      {
+        "item": "Caisse",
+        "icon": "money",
+        "url": "#!/list_product"
+      }
+    ]
+  },
+  {
+    "item": "Preferences",
+    "icon": "options",
+    "sub_item": [
+      {
+        "item": "BDD Manager",
+        "icon": "file text",
+        "url": "./adminer/",
+        "target": "_blank"
+      }
+    ]
+  },
+  {
+    "item": "Aide",
+    "icon": "help circle",
+    "sub_item": [
+      {
+        "item": "Documentation",
+        "icon": "book",
+        "url": "#!/doc"
+      },
+      {
+        "item": "GitLab",
+        "icon": "gitlab",
+        "url": "https://gitlab.com/hbendali/ogcom",
+        "target":"_blank"
+      },
+      {
+        "item": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/hbendalibraham",
+        "target":"_blank"
+      },
+      {
+        "item": "Twitter",
+        "icon": "twitter",
+        "url": "http://www.twitter.com/hbendalibraham",
+        "target":"_blank"
+      },
+      {
+        "item": "A propos de OGCOM",
+        "icon": "info",
+        "url": "#!/about"
+      }
+    ]
+  }
+]
