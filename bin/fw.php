@@ -5,9 +5,9 @@ setlocale(LC_MONETARY, 'dz_DZA');
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-ini_set('session.cookie_domain', '.ogcom.com' );
+//ini_set('session.cookie_domain', '.ogcom.com' );
 
-session_cache_limiter('nocache');
+//session_cache_limiter('nocache');
 //session_cache_expire(10);
 session_start();
 

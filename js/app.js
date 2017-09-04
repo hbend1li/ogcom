@@ -106,18 +106,20 @@ var ogcomApp = angular
               ' <button class="ui inverted red basic button" onclick="$(\'.ui.login\').transition(\'fly down\')">Sign In</button>' +
               '</div>'
             :
-              '<div class="ui dropdown item">' + 
+              '<div class="ui olive dropdown item">' + 
               $scope.$parent.user.firstname + ' ' + $scope.$parent.user.lastname + 
               ' <img src="img/transparent.png" data-src="' + $scope.$parent.user.gravatar + '" class="ui circular image" style="margin:0 10px;height:26px;width:26px;border:0">' + 
               ' <div class="menu">' + 
               '  <a class="item" href="#!/profile/@' + $scope.$parent.user.username + '"> <i class="heartbeat icon"></i> Profile </a>' + 
               '  <a class="item" href="#!/messanger/"> <i class="comments outline icon"></i> Messanger </a>' + 
-              '  <div class="item"> <i class="code icon"></i> with <i class="heart icon"></i> by <i class="gitlab icon"></i></div>' +
-              '  <div class="ui divider"></div>' +
               '  <a class="item" href="#!/" ng-click="submitLogout()"> <i class="power icon"></i> Signout </a>' + 
+              '  <a class="item active" href="https://github.com/hbendalibraham/ogcom" target="_blank"><h4><i class="code icon"></i> with &nbsp;&nbsp;&nbsp;<i class="heart icon"></i> by &nbsp;&nbsp;&nbsp;<i class="github icon"></i></h4></a>' +
               ' </div>' + 
               '</div>'
             ;
+
+
+
 
           // Recompile Element
           $('#rmenu').html( $compile(angular.element(html))($scope) );
