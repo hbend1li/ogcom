@@ -16,20 +16,23 @@ $handle = fopen($filename, "r");
 $json = fread($handle, filesize($filename));
 fclose($handle);
 
-$acl = json_decode($_SESSION["user"]->acl);
+$acl = isset($_SESSION["user"])? (array) $_SESSION["user"]->acl : null;
 $json = json_decode($json);
 
 $i=0;
-
-
-foreach ($json as $ele) {
-
-    if ( isset($acl->($ele->item)) && $acl->($ele->item) == false ) {
-        unset($json[$i]);
+foreach ($json as $ele)
+{
+  if( $ele->acl !== true && !( $ele->acl == "connect" && $fw->signin() ) && ( !isset($acl[$ele->acl]) || $acl[$ele->acl] != true ))
+    unset($json[$i]);
+  else
+    $j=0;
+    foreach ($ele->sub_item as $sub_ele)
+    {
+      if( $sub_ele->acl !== true && !( $sub_ele->acl == "connect" && $fw->signin() ) && ( !isset($acl[$sub_ele->acl]) || $acl[$sub_ele->acl] != true ))
+        unset($ele->sub_item[$j]);
+      $j++;
     }
-    $i++;
-
+  $i++;
 }
-
 
 echo json_encode( $json );

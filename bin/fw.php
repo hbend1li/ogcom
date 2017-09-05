@@ -208,6 +208,7 @@ class FireWorks{
             $this->fetchAll("UPDATE `user` SET `last_update` = now() WHERE `id` = '$id'");
             $s = $this->fetchAll("SELECT * FROM user WHERE `id` = '$id'")[0];
             $s->gravatar = $this->gravatar($s->email);
+            //print_r(json_decode($s->acl));
             $s->acl = json_decode($s->acl);
             unset($s->password);
             $_SESSION['user'] = $s;

@@ -96,6 +96,12 @@ var ogcomApp = angular
 
     
     $scope.session = function(){
+      $http.get('json/?nav_menu')
+        .then(function(res){
+          $scope.nav_menu = res.data;
+        })
+      ;
+
       $http.get('api/?json&session')
         .then(function(res){
           $scope.$parent.user = res.data;
@@ -113,7 +119,7 @@ var ogcomApp = angular
               '  <a class="item" href="#!/profile/@' + $scope.$parent.user.username + '"> <i class="la la-lg la-heart-o"></i>&nbsp;&nbsp; Profile </a>' + 
               '  <a class="item" href="#!/messanger/"> <i class="la la-lg la-comments"></i>&nbsp;&nbsp; Messanger </a>' + 
               '  <a class="item" href="#!/" ng-click="submitLogout()"> <i class="la la-lg la-power-off"></i>&nbsp;&nbsp; Signout </a>' + 
-              '  <div class="item active"><h4><i class="la la-lg la-code"></i>&nbsp; with &nbsp;<i class="la la-lg la-heart"></i>&nbsp; by&nbsp; <i class="la la-lg la-coffee"></i></h4></div>' +
+              '  <div class="item active"><h4><i class="la la-lg la-code"></i>&nbsp; with &nbsp;<i class="la la-lg la-heart"></i>&nbsp; by <i class="la la-lg la-coffee"></i></h4></div>' +
               ' </div>' + 
               '</div>'
             ;

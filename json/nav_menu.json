@@ -2,151 +2,179 @@
   {
     "item": "Tableau de bord",
     "icon": "dashboard",
+    "acl": true,
     "sub_item": [
       {
         "item": "Accueille",
         "icon": "home",
-        "url": "#!/"
+        "url": "#!/",
+        "acl": true
       }
     ]
   },
   {
     "item": "Contacts",
     "icon": "fax",
+    "acl": "signin",
     "sub_item": [
       {
         "item": "List des contacts",
         "icon": "tty",
-        "url": "#!/contacts_list"
+        "url": "#!/contacts_list",
+        "acl": "signin"
       },
       {
         "item": "Nouveau contact",
         "icon": "plus",
-        "url": "#!/contact/0"
+        "url": "#!/contact/0",
+        "acl": "signin"
       }
     ]
   },
   {
     "item": "Produit",
     "icon": "archive",
+    "acl": "product",
     "sub_item": [
       {
         "item": "Stock",
         "icon": "cubes",
-        "url": "#!/stock"
+        "url": "#!/stock",
+        "acl": "product"
       },
       {
         "item": "List des produits",
         "icon": "list",
-        "url": "#!/product_list"
+        "url": "#!/product_list",
+        "acl": "product"
       },
       {
         "item": "Nouveau produit",
         "icon": "plus",
-        "url": "#!/product/0"
+        "url": "#!/product/0",
+        "acl": "product"
       },
       {
         "item": "Garantie",
         "icon": "recycle",
-        "url": "#!/new_product"
+        "url": "#!/new_product",
+        "acl": "product"
       }
     ]
   },
   {
     "item": "Achat",
     "icon": "shopping-cart",
+    "acl": "purchase",
     "sub_item": [
       {
         "item": "Bon de command",
         "icon": "file-text",
-        "url": "#!/stock"
+        "url": "#!/stock",
+        "acl": "purchase"
       },
       {
         "item": "Facture preformat",
         "icon": "file-text",
-        "url": "#!/stock"
+        "url": "#!/stock",
+        "acl": "purchase"
       },
       {
         "item": "Facture",
         "icon": "file-text",
-        "url": "#!/list_product"
+        "url": "#!/list_product",
+        "acl": "purchase"
       },
       {
         "item": "Bon de livraison",
         "icon": "file-text",
-        "url": "#!/new_product"
+        "url": "#!/new_product",
+        "acl": "purchase"
       }
     ]
   },
   {
     "item": "Vente",
     "icon": "money",
+    "acl": "sale",
     "sub_item": [
       {
         "item": "Bon de command",
         "icon": "file-text",
-        "url": "#!/new_product"
+        "url": "#!/new_product",
+        "acl": "sale"
       },
       {
         "item": "Facture",
         "icon": "file-text",
-        "url": "#!/stock"
+        "url": "#!/stock",
+        "acl": "sale"
       },
       {
         "item": "Bon de livraison",
         "icon": "file-text",
-        "url": "#!/new_product"
+        "url": "#!/new_product",
+        "acl": "sale"
       },
       {
         "item": "Caisse",
         "icon": "money",
-        "url": "#!/list_product"
+        "url": "#!/list_product",
+        "acl": "sale"
       }
     ]
   },
   {
     "item": "Preferences",
     "icon": "sliders",
+    "acl": "setting",
     "sub_item": [
       {
         "item": "BDD Manager",
         "icon": "file-text",
         "url": "./adminer/",
-        "target": "_blank"
+        "target": "_blank",
+        "acl": "admin"
       },
       {
         "item": "List des utilisateur",
         "icon": "users",
         "url": "./adminer/",
-        "target": "_blank"
+        "target": "_blank",
+        "acl": "admin"
       }
     ]
   },
   {
     "item": "Aide",
     "icon": "info",
+    "acl": true,
     "sub_item": [
       {
         "item": "Documentation",
         "icon": "book",
-        "url": "#!/doc"
+        "url": "#!/doc",
+        "acl": "signin"
       },
       {
         "item": "GitHub",
         "icon": "github",
         "url": "https://github.com/hbendalibraham",
-        "target":"_blank"
+        "target": "_blank",
+        "acl": true
       },
       {
         "item": "Twitter",
         "icon": "twitter",
         "url": "http://www.twitter.com/hbendalibraham",
-        "target":"_blank"
+        "target": "_blank",
+        "acl": true
       },
       {
         "item": "A propos de OGCOM",
         "icon": "info",
-        "url": "#!/about"
+        "url": "#!/about",
+        "acl": true
       }
     ]
   }

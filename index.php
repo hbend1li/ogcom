@@ -41,7 +41,7 @@
 <body ng-controller="mainCtrl">
 	
   <div class="ui top inverted fixed menu" ng-init="nav_menu=''">
-    <div class="header item">
+    <div class="ui medium header item">
       #Open<b>GCOM</b>
     </div>
     <div class="ui dropdown item top_menu" ng-repeat="ele in nav_menu"  ng-init="$last ? reactiveMenu() : angular.noop()">
