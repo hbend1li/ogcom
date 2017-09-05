@@ -110,10 +110,10 @@ var ogcomApp = angular
               $scope.$parent.user.firstname + ' ' + $scope.$parent.user.lastname + 
               ' <img src="img/transparent.png" data-src="' + $scope.$parent.user.gravatar + '" class="ui circular image" style="margin:0 10px;height:26px;width:26px;border:0">' + 
               ' <div class="menu">' + 
-              '  <a class="item" href="#!/profile/@' + $scope.$parent.user.username + '"> <i class="heartbeat icon"></i> Profile </a>' + 
-              '  <a class="item" href="#!/messanger/"> <i class="comments outline icon"></i> Messanger </a>' + 
-              '  <a class="item" href="#!/" ng-click="submitLogout()"> <i class="power icon"></i> Signout </a>' + 
-              '  <a class="item active" href="https://github.com/hbendalibraham/ogcom" target="_blank"><h4><i class="code icon"></i> with &nbsp;&nbsp;&nbsp;<i class="heart icon"></i> by &nbsp;&nbsp;&nbsp;<i class="github icon"></i></h4></a>' +
+              '  <a class="item" href="#!/profile/@' + $scope.$parent.user.username + '"> <i class="la la-lg la-heart-o"></i>&nbsp;&nbsp; Profile </a>' + 
+              '  <a class="item" href="#!/messanger/"> <i class="la la-lg la-comments"></i>&nbsp;&nbsp; Messanger </a>' + 
+              '  <a class="item" href="#!/" ng-click="submitLogout()"> <i class="la la-lg la-power-off"></i>&nbsp;&nbsp; Signout </a>' + 
+              '  <div class="item active"><h4><i class="la la-lg la-code"></i>&nbsp; with &nbsp;<i class="la la-lg la-heart"></i>&nbsp; by&nbsp; <i class="la la-lg la-coffee"></i></h4></div>' +
               ' </div>' + 
               '</div>'
             ;

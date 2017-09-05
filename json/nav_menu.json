@@ -12,11 +12,11 @@
   },
   {
     "item": "Contacts",
-    "icon": "address book outline",
+    "icon": "fax",
     "sub_item": [
       {
         "item": "List des contacts",
-        "icon": "address card outline",
+        "icon": "tty",
         "url": "#!/contacts_list"
       },
       {
@@ -28,7 +28,7 @@
   },
   {
     "item": "Produit",
-    "icon": "shop",
+    "icon": "archive",
     "sub_item": [
       {
         "item": "Stock",
@@ -37,7 +37,7 @@
       },
       {
         "item": "List des produits",
-        "icon": "archive",
+        "icon": "list",
         "url": "#!/product_list"
       },
       {
@@ -54,47 +54,47 @@
   },
   {
     "item": "Achat",
-    "icon": "shopping basket",
+    "icon": "shopping-cart",
     "sub_item": [
       {
         "item": "Bon de command",
-        "icon": "file text",
+        "icon": "file-text",
         "url": "#!/stock"
       },
       {
         "item": "Facture preformat",
-        "icon": "file text",
+        "icon": "file-text",
         "url": "#!/stock"
       },
       {
         "item": "Facture",
-        "icon": "file text",
+        "icon": "file-text",
         "url": "#!/list_product"
       },
       {
         "item": "Bon de livraison",
-        "icon": "file text",
+        "icon": "file-text",
         "url": "#!/new_product"
       }
     ]
   },
   {
     "item": "Vente",
-    "icon": "shopping bag",
+    "icon": "money",
     "sub_item": [
       {
         "item": "Bon de command",
-        "icon": "file text",
+        "icon": "file-text",
         "url": "#!/new_product"
       },
       {
         "item": "Facture",
-        "icon": "file text",
+        "icon": "file-text",
         "url": "#!/stock"
       },
       {
         "item": "Bon de livraison",
-        "icon": "file text",
+        "icon": "file-text",
         "url": "#!/new_product"
       },
       {
@@ -106,11 +106,17 @@
   },
   {
     "item": "Preferences",
-    "icon": "options",
+    "icon": "sliders",
     "sub_item": [
       {
         "item": "BDD Manager",
-        "icon": "file text",
+        "icon": "file-text",
+        "url": "./adminer/",
+        "target": "_blank"
+      },
+      {
+        "item": "List des utilisateur",
+        "icon": "users",
         "url": "./adminer/",
         "target": "_blank"
       }
@@ -118,18 +124,12 @@
   },
   {
     "item": "Aide",
-    "icon": "help circle",
+    "icon": "info",
     "sub_item": [
       {
         "item": "Documentation",
         "icon": "book",
         "url": "#!/doc"
-      },
-      {
-        "item": "GitLab",
-        "icon": "gitlab",
-        "url": "https://gitlab.com/hbendali/ogcom",
-        "target":"_blank"
       },
       {
         "item": "GitHub",

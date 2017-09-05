@@ -22,7 +22,7 @@
   <script src="css/semantic/semantic.js"></script>
 
   <!--  line-awesome.css  -->
-  <!--link rel="stylesheet" href="css/line-awesome.css"/-->
+  <link rel="stylesheet" href="css/line-awesome.css"/>
   <link rel="stylesheet" href="css/style.css"/>
 
 	<script src="js/app.js"></script>
@@ -45,9 +45,9 @@
       #Open<b>GCOM</b>
     </div>
     <div class="ui dropdown item top_menu" ng-repeat="ele in nav_menu"  ng-init="$last ? reactiveMenu() : angular.noop()">
-      <i class="{{ele.icon}} icon"></i> {{ele.item}}
+      <i class="la la-2x la-{{ele.icon}}"></i>&nbsp;&nbsp; {{ele.item}}
       <div class="menu">
-        <a class="item" href="{{sub_ele.url}}" target="{{sub_ele.target}}" ng-repeat="sub_ele in ele.sub_item"> <i class="{{sub_ele.icon}} icon"></i> {{sub_ele.item}}</a>
+        <a class="item" href="{{sub_ele.url}}" target="{{sub_ele.target}}" ng-repeat="sub_ele in ele.sub_item"> <i class="la la-lg la-{{sub_ele.icon}}"></i>&nbsp;&nbsp; {{sub_ele.item}}</a>
       </div>
     </div>
     <div class="right menu" id="rmenu">
