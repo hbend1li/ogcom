@@ -1,10 +1,10 @@
 README
 
 
-# ACL
+# ACL  
 
-ACL can get true, false, signin or defined name 
-####ex
+ACL can get true, false, signin or defined name  
+####ex  
     {
     ...
       "acl":true,
@@ -13,11 +13,11 @@ ACL can get true, false, signin or defined name
       "acl":"beta_test",
     ...
     }
+  
+  
 
-
-
-#MySQL
-
+#MySQL  
+  
     SET NAMES utf8;  
     SET time_zone = '+00:00';  
       
