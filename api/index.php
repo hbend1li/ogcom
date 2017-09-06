@@ -127,13 +127,13 @@ else if (isset($_GET['json'])){
         //exit;
         if( $_GET['list']=='user' || $_GET['list']=='contact' || $_GET['list']=='produit' )
         {
-          $where = ( !isset($_GET['id']) || $_GET['id']=='' || $_GET['id']=='0' ) ? "id is not null" : "id=".$fw->sql_inj($_GET['id']) ;
+          $where = ( !isset($_GET['id']) || $_GET['id']=='' || $_GET['id']=='0' ) ? "id is not null" : "id=".$fw->ossl($fw->sql_inj($_GET['id']),'dec') ;
           $ret = $fw->fetchAll("SELECT * FROM $_GET[list] WHERE $where");
 
           if ($_GET['list']=='user')
             foreach ($ret as $value)
             {
-                $value->id = $fw->crypt($value->id,'enc');
+                $value->id = $fw->ossl($value->id, 'enc');
                 $value->gravatar = $fw->gravatar($value->email);
                 $value->acl = json_decode($value->acl);
                 unset($value->password);

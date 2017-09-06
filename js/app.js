@@ -380,7 +380,6 @@ var ogcomApp = angular
       })
     ;
     
-
   })
 
 /*

@@ -237,21 +237,21 @@ class FireWorks{
             return json_decode($json);
     }
 
-    function crypt( $action = 'enc', $string ) {
+    function ossl( $string, $action = 'enc' ) {
         // you may change these values to your own
         global $_SESSION;
      
         $output = "";
-        $encrypt_method = "AES-256-CBC";
-        $secret_key = $_SESSION['user']->uuid;
+        $pass = $_SESSION['user']->uuid;
+        $method = 'aes128';
+        $iv = "1827364554637281";
         
-        if ( $action == 'encrypt' ) {
-            $output = openssl_encrypt($string, $encrypt_method, $secret_key);
-        } else if( $action == 'decrypt' ) {
-            $output = openssl_decrypt($string, $encrypt_method, $secret_key);
+        if ( $action == 'enc' ) {
+            $result = openssl_encrypt ($string, $method, $pass, false, $iv);
+        } else if( $action == 'dec' ) {
+            $result = openssl_decrypt($string, $method, $pass, false, $iv);
         }
-
-        return $output;
+        return $result;
     }
 
 }
