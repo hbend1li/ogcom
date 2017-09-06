@@ -101,7 +101,7 @@
       {
         "item": "Bon de command",
         "icon": "file-text",
-        "url": "#!/new_product",
+        "url": "#!/product_new",
         "acl": "sale"
       },
       {
@@ -113,13 +113,13 @@
       {
         "item": "Bon de livraison",
         "icon": "file-text",
-        "url": "#!/new_product",
+        "url": "#!/product_new",
         "acl": "sale"
       },
       {
         "item": "Caisse",
         "icon": "money",
-        "url": "#!/list_product",
+        "url": "#!/product_list",
         "acl": "sale"
       }
     ]
@@ -139,8 +139,7 @@
       {
         "item": "List des utilisateur",
         "icon": "users",
-        "url": "./adminer/",
-        "target": "_blank",
+        "url": "#!/user_list",
         "acl": "admin"
       }
     ]
