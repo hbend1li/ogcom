@@ -34,6 +34,15 @@ var ogcomApp = angular
       controller: 'produitCtrl'
     })
 
+    .when('/user_list', {
+      templateUrl: 'templates/user_list.html',
+      controller: 'userListCtrl'
+    })
+    .when('/user/:id', {
+      templateUrl: 'templates/user.html',
+      controller: 'userCtrl'
+    })
+
     .when("/about", {
         templateUrl : "templates/about.html"
     })
@@ -350,6 +359,219 @@ var ogcomApp = angular
     
 
   })
+
+  // ==================================================================================================
+  .controller('userListCtrl', function ($scope,$http) {
+    if (!$scope.$parent.userList)
+      $http.get('api/?json&list=user')
+        .then(function(res){
+          $scope.$parent.userList = res.data;
+          console.log('- Load user list ' + $scope.$parent.userList.length );
+        })
+      ;
+  })
+
+  // ==================================================================================================
+  .controller('userCtrl', function ($scope,$http,$routeParams,$location) {
+    
+    $http.get('api/?json&list=user&id=' + $routeParams.id )
+      .then(function(res){
+        $scope.profile = res.data[0];
+      })
+    ;
+    
+
+  })
+
+/*
+  console.log("> %cProfile",'color: #0f0');
+  console.log($scope);
+  $scope.spiner_save = false;
+  $scope.spiner_del  = false;
+  $scope.profile = {'id':null,'username':null,'password':null,'firstname':null,'lastname':null,'email':null,'department':null,'directeur':null,'mobile':null,'tel':null,'fax':null,'address':null,'signature':null,'policy':null};
+
+  $('.message .close')
+    .on('click', function() {
+      $(this)
+        .closest('.message')
+        .transition('fade')
+      ;
+    })
+  ;
+
+  if ($routeParams.id != "0"){
+    $http.get('api/?user='+$routeParams.id)
+      .then(function(r){
+        $scope.profile = r.data[0];
+        $("#terms").html('');
+        console.log("- load "+$routeParams.id);
+        console.log($scope.profile);
+      });
+   
+    $("#username").attr("disabled","disabled"); 
+    $("#password").removeAttr("required");
+    $(".rmv_corner").removeClass("corner labeled");
+    $(".rmv_corner .ui.left.corner.label").remove();
+  }
+
+  $scope.submit = function(z){
+    //if ( $('.ui.form').form('is valid') ){
+    if ( $scope.profile ){
+      $scope.spiner_save = true;
+
+      console.log("- prepare to save");
+      //console.log($scope.profile);
+
+      //$scope.profile      
+
+
+      angular.forEach($scope.profile, function(value, key) {
+        if (angular.isUndefined(value)){
+          this.key="";
+          console.log("="+key+":"+value);
+        }
+      });
+
+      $http.post('api/?user=s', $scope.profile, {headers: { 'Content-Type': 'application/json; charset=utf-8' }})
+      .then(function (r) {
+
+        if (r.data.id != "0")
+          $scope.profile.id = r.data.id;
+        
+        if (r.data.errorCode == null){
+          $scope.msg = "# Profile enregistrer";
+          $http.get('api/?user=a')
+            .then(function(res){
+              z.userList = res.data;
+              console.log('- Load user list ' + z.userList.length );
+            })
+          ;
+          $location.path('user_list');
+
+        }else{
+          $scope.msg = r.data.message;
+          console.log("# %cerror: "+ r.data.message, 'color:#f00;');
+        }
+        $scope.spiner_save = false;
+      },      
+      function(){
+        $scope.msg = "# Erreur d'enregistrement";
+        console.log("# %cfield!", 'color:#f00;');
+        $scope.spiner_save = false;
+      });
+    }
+  }
+
+  $scope.delete = function(){
+    $scope.spiner_del = true;
+    if ($scope.profile.id != "0" && $scope.profile.id != "" && confirm("Etre vous sure de vouloir supprimer ce profile ?")){
+      
+      $http.post('api/?user=d&id='+$scope.profile.id)
+      .then(function (r) {
+        //console.log(r);
+        console.log("- delete");
+        
+        if (!r.data.errorCode){
+          console.log("# %cfiled!",'color:#f00');
+          $location.path('user_list');          
+        }else if (r.data.errorCode != null){
+          console.log("# %cfiled!",'color:#f00');
+        }else{
+          delete $scope.$parent.userList;
+          console.log("# %cdone!",'color:#0f0');
+          $location.path('userList');
+        }
+      },      
+      function(){
+        console.log("# %cfiled!",'color:#f00');
+      });
+      $scope.spiner_del = false;
+    }else{
+      $scope.spiner_del = false;
+    }
+  }
+
+})
+
+*/
+
+
+  // ==================================================================================================
+  .controller('SettingsController', function ($scope,$http) {
+    $scope.loading = false;
+    $scope.settings = {'id':null,'username':null,'password':null,'firstname':null,'lastname':null,'email':null,'department':null,'dir':null,'mobile':null,'tel':null,'fax':null,'address':null,'lat':null,'long':null,'signature':null,'policy':null};
+
+    $('.message .close')
+      .on('click', function() {
+        $(this)
+          .closest('.message')
+          .transition('fade')
+        ;
+      })
+    ;
+
+    $scope.save = function(){
+      if ( $('.ui.form').form('is valid') ){
+        $scope.loading = true;
+
+        console.log("save");
+        console.log($scope.profile);
+
+        $http.post('api/?user=s', $scope.profile, {headers: { 'Content-Type': 'application/json; charset=utf-8' }})
+        .then(function (r) {
+          console.log(r);
+
+          if (r.data.id != "0")
+            $scope.profile.id = r.data.id;
+
+          if (r.data.error[1] == null)
+            $scope.msg = "Profile enregistrer";
+          else
+            $scope.msg = r.data.error[2];
+          
+          console.log("-> done!");
+          $scope.loading = false;
+          delete $scope.$parent.user_list;
+          $location.path('user_list');
+        },      
+        function(){
+          $scope.msg = "Erreur d'enregistrement";
+          console.log("-> field");
+          $scope.loading = false;
+        });
+      }
+    }
+
+    $scope.delete = function(){
+       $scope.loading = true;
+      if ($scope.profile.id != "0" && $scope.profile.id != "" && confirm("Etre vous sure de vouloir supprimer ce profile ?")){
+        
+        $http.post('api/?user=d&id='+$scope.profile.id)
+        .then(function (r) {
+          console.log(r);
+          if (!r.data.err){
+            console.log("-> delete field");
+            $location.path('user_list');          
+          }else if (r.data.err != null){
+            console.log("-> delete field");
+          }else{
+            delete $scope.$parent.user_list;
+            console.log("-> delete done!");
+            $location.path('user_list');
+          }
+        },      
+        function(){
+          console.log("-> delete field");
+        });
+        $scope.loading = false;
+      }else{
+        $scope.loading = false;
+      }
+    }
+  })
+
+
+
 
 
   // ==================================================================================================

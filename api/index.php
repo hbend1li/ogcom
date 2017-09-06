@@ -123,19 +123,21 @@ else if (isset($_GET['json'])){
       // view selected id or view all
       else if ( isset($_GET['list']) )
       {
-        echo $_GET['list'];
-        exit;
+        //echo $_GET['list'];
+        //exit;
         if( $_GET['list']=='user' || $_GET['list']=='contact' || $_GET['list']=='produit' )
         {
           $where = ( !isset($_GET['id']) || $_GET['id']=='' || $_GET['id']=='0' ) ? "id is not null" : "id=".$fw->sql_inj($_GET['id']) ;
           $ret = $fw->fetchAll("SELECT * FROM $_GET[list] WHERE $where");
 
-  //            foreach ($result as $value)
-  //            {
-  //                $value->gravatar = $fw->gravatar($value->email);
-  //                $value->policy   = json_decode($value->policy);
-  //                $value->password = null;
-  //            }
+          if ($_GET['list']=='user')
+            foreach ($ret as $value)
+            {
+                $value->id = $fw->crypt($value->id,'enc');
+                $value->gravatar = $fw->gravatar($value->email);
+                $value->acl = json_decode($value->acl);
+                unset($value->password);
+            }
 
         }
       }

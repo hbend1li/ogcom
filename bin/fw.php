@@ -172,6 +172,8 @@ class FireWorks{
             $result =  $this->fetchAll("SELECT * FROM $this->tb_user WHERE ( username='$username' OR email='$username' ) AND password='$pwd'");
             if (count($result)>0){
                 $_SESSION['user'] = $result[0];
+                $_SESSION['user']->uuid = uniqid();
+
                 //print_r($_SESSION['user']);
                 $this->signupdate();
 
@@ -204,12 +206,13 @@ class FireWorks{
         
         if ( isset($_SESSION['user']) ){
             $id = $_SESSION['user']->id;
+            $uuid = $_SESSION['user']->uuid;
 
             $this->fetchAll("UPDATE `user` SET `last_update` = now() WHERE `id` = '$id'");
             $s = $this->fetchAll("SELECT * FROM user WHERE `id` = '$id'")[0];
             $s->gravatar = $this->gravatar($s->email);
-            //print_r(json_decode($s->acl));
             $s->acl = json_decode($s->acl);
+            $s->uuid = $uuid;
             unset($s->password);
             $_SESSION['user'] = $s;
         }
@@ -232,6 +235,23 @@ class FireWorks{
             return $json;
         else
             return json_decode($json);
+    }
+
+    function crypt( $action = 'enc', $string ) {
+        // you may change these values to your own
+        global $_SESSION;
+     
+        $output = "";
+        $encrypt_method = "AES-256-CBC";
+        $secret_key = $_SESSION['user']->uuid;
+        
+        if ( $action == 'encrypt' ) {
+            $output = openssl_encrypt($string, $encrypt_method, $secret_key);
+        } else if( $action == 'decrypt' ) {
+            $output = openssl_decrypt($string, $encrypt_method, $secret_key);
+        }
+
+        return $output;
     }
 
 }
