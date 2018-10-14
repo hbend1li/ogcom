@@ -6,36 +6,21 @@
   <title>#Open Gestion Commercial</title>
   <link rel="icon" href="img/ogcom.ico"/>
 
-  <!-- JQuery -->
-  <script src="js/jquery/jquery-3.2.1.js"></script>
-  <script src="js/jquery/jquery.tablesort.min.js"></script>
-  <!--script src="js/markdown.min.js"></script-->
+  <!-- JS -->
+  <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
+  <script src="vendor/angular/angular.js"></script>
+  <script src="vendor/angular/i18n/angular-locale_fr-fr.js"></script>
+  <script src="vendor/angular/angular-route.js"></script>
+  <script src="vendor/angular/angular-sanitize.js"></script>
+  <script src="vendor/semantic-ui/semantic.min.js"></script>
 
-  <!--  Angular  -->
-  <script src="js/angular/angular.js"></script>
-  <script src="js/angular/i18n/angular-locale_fr-fr.js"></script>
-  <script src="js/angular/angular-route.js"></script>
-  <script src="js/angular/angular-sanitize.js"></script>
+  <!--  CSS  -->
+  <link rel="stylesheet" href="vendor/semantic-ui/semantic.min.css">
+  <link rel="stylesheet" href="vendor/line-awesome/line-awesome.css"/>
+  <link rel="stylesheet" href="css/defaults.css"/>
 
-  <!--  Semantic-UI  -->
-  <link rel="stylesheet" type="text/css" href="css/semantic/semantic.css"/>
-  <script src="css/semantic/semantic.js"></script>
-
-  <!--  line-awesome.css  -->
-  <link rel="stylesheet" href="css/line-awesome.css"/>
-  <link rel="stylesheet" href="css/style.css"/>
-
+  <!--  APP  -->
 	<script src="js/app.js"></script>
-
-  <style type="text/css">
-    .login{
-      position: fixed;
-      top:70px;
-      right: 20px;
-      width: 300px;
-      visibility: hidden;
-    }
-  </style>
 
 </head>
 <body ng-controller="mainCtrl">
