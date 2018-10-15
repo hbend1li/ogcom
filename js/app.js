@@ -96,16 +96,9 @@ var ogcomApp = angular
 
     $scope.$parent.date = new Date();
     //$scope._login = {email:null,password:null};
-
-    $http.get('json/?nav_menu')
-      .then(function(res){
-        $scope.nav_menu = res.data;
-      })
-    ;
-
     
     $scope.session = function(){
-      $http.get('json/?nav_menu')
+      $http.get('api/?nav_menu=main')
         .then(function(res){
           $scope.nav_menu = res.data;
         })

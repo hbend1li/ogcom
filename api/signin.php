@@ -10,8 +10,8 @@ if (isset($_GET['signin']))
   $result   = $fw->fetchAll("SELECT * FROM user WHERE ( username='$username' OR email='$username' ) AND password='$password'");
   if (count($result)>0){
     $_SESSION['user'] = $result[0];
-    $_SESSION['user']->uuid = uniqid();
     unset($_SESSION['user']->password);
+    signin();
     $return = true;
   }else{
     $_SESSION['user'] = null;

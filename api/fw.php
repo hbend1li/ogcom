@@ -14,7 +14,7 @@ session_start();
 
 // Prepart connexion à la base de données
 // FireWorks ('host|username|password|bdd');
-$fw = new FireWorks('127.0.0.1|root|genesis|ogcom');
+$fw = new FireWorks(__CONNECTION__);
 
 //$fw->telegram_api = "156659332:AAFCyXi94dL02gXaHlzRGw7Mk9WZsfMMN1A";
 //$fw->telegram_id  = "127969204";
@@ -31,13 +31,11 @@ class FireWorks{
 
     public function __construct($connDetails){
         if(!is_object(self::$databases[$connDetails])){
-            list($host, $user, $pass, $dbname) = explode('|', $connDetails);
-            $dsn = "mysql:host=$host;dbname=$dbname";
+            list($host, $port, $user, $pass, $dbname) = explode('|', $connDetails);
+            $dsn = "mysql:host=$host;port=$port;dbname=$dbname";
             self::$databases[$connDetails] = new PDO($dsn, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         }
         $this->connection = self::$databases[$connDetails];
-       
-        //$this->signupdate();
     }
 
     // RUN SQL =========================================================
@@ -213,4 +211,14 @@ function logs($msg)
   fclose($mylog);
 }
 
-
+function signin()
+{
+  global $fw, $_SESSION;
+  if (isset($_SESSION['user'])){
+    $uuid = $_SESSION['user']->uuid;
+    $fw->fetchAll("UPDATE user SET `updated`=NOW() WHERE `uuid`='$uuid'");
+    return true;
+  }else{
+    return false;
+  }
+}

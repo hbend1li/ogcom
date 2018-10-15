@@ -3,7 +3,9 @@
 if (isset($_GET))
 {
   // Include FireWorks lib
-  require_once('../bin/fw.php');
+  require_once('connection.php');
+  require_once('uuid.php');
+  require_once('fw.php');
 
   $sql = "";
   $err = "";

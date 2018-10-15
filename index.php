@@ -13,22 +13,20 @@
   <script src="vendor/angular/angular-route.js"></script>
   <script src="vendor/angular/angular-sanitize.js"></script>
   <script src="vendor/semantic-ui/semantic.min.js"></script>
+	<script src="js/app.js"></script>
 
   <!--  CSS  -->
   <link rel="stylesheet" href="vendor/semantic-ui/semantic.min.css">
   <link rel="stylesheet" href="vendor/line-awesome/line-awesome.css"/>
   <link rel="stylesheet" href="css/defaults.css"/>
 
-  <!--  APP  -->
-	<script src="js/app.js"></script>
-
 </head>
 <body ng-controller="mainCtrl">
 	
   <div class="ui top inverted fixed menu" ng-init="nav_menu=''">
-    <div class="ui medium header item">
+    <a class="ui medium header item" href="#">
       #Open<b>GCOM</b>
-    </div>
+    </a>
     <div class="ui dropdown item top_menu" ng-repeat="ele in nav_menu"  ng-init="$last ? reactiveMenu() : angular.noop()">
       <i class="la la-2x la-{{ele.icon}}"></i>&nbsp;&nbsp; {{ele.item}}
       <div class="menu">

@@ -176,5 +176,38 @@
         "acl": true
       }
     ]
+  },
+  {
+    "item": "Developer",
+    "icon": "bug",
+    "acl": "dev",
+    "sub_item": [
+      {
+        "item": "Documentation",
+        "icon": "book",
+        "url": "#!/doc",
+        "acl": "signin"
+      },
+      {
+        "item": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/hbendalibraham",
+        "target": "_blank",
+        "acl": true
+      },
+      {
+        "item": "Twitter",
+        "icon": "twitter",
+        "url": "http://www.twitter.com/hbendalibraham",
+        "target": "_blank",
+        "acl": true
+      },
+      {
+        "item": "A propos de OGCOM",
+        "icon": "info",
+        "url": "#!/about",
+        "acl": true
+      }
+    ]
   }
 ]
