@@ -37,7 +37,7 @@ class FireWorks{
         }
         $this->connection = self::$databases[$connDetails];
        
-        $this->signupdate();
+        //$this->signupdate();
     }
 
     // RUN SQL =========================================================
@@ -99,14 +99,6 @@ class FireWorks{
         }
     }
 
-    // SQL Injection ===================================================
-    function sql_inj($value)
-    {
-        $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
-        $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
-        return str_replace($search, $replace, $value);
-    }
-
     // Reformat value if field is date =================================
     public function reformat_date($key, $val)
     {
@@ -151,91 +143,13 @@ class FireWorks{
         return $url;
     }
 
-    // LOG =============================================================
-    public function log($msg)
-    {
-        $this->fetchAll("INSERT INTO $this->tb_log (ip,username,msg) VALUES ( '$_SERVER[REMOTE_ADDR]','".(isset($_SESSION['user']) ? $_SESSION['user']->email : "Guest")."','".htmlentities($msg)."')");
-    }
-
-    // SIGNIN ==========================================================
-    public function signin( $username=null , $password=null ) {
-        global $_SESSION;
-        $ret = false;
-        if ( $username==null && $password==null )
-        {
-            if ( isset($_SESSION['user']) )
-                $ret = true;
-        }else{
-            $username = $this->sql_inj($username);
-            $password = $this->sql_inj($password);
-            $pwd      = base64_encode($password); //sha1($password);
-            $result =  $this->fetchAll("SELECT * FROM $this->tb_user WHERE ( username='$username' OR email='$username' ) AND password='$pwd'");
-            if (count($result)>0){
-                $_SESSION['user'] = $result[0];
-                $_SESSION['user']->uuid = uniqid();
-
-                //print_r($_SESSION['user']);
-                $this->signupdate();
-
-                $this->log( "SIGNIN ".$username ) ;
-                $ret = true;
-            }else{
-                $this->signout();
-                $this->log( "ACCESS DENIED / $username / $password / " ) ;
-            }
-        }
-
-        return $ret;
-    }
-
-    // SIGNOUT =========================================================
-    public function signout() {
-        global $_SESSION;
-        if (isset($_SESSION['user']))
-        {
-            $this->log( "SIGNOUT / ".$_SESSION['user']->username." / " ) ;
-            $_SESSION['user'] = null;
-            unset($_SESSION);
-        }
-        session_destroy();
-    }
-
-    // SIGNUPDATE =========================================================
-    public function signupdate() {
-        global $_SESSION;
-        
-        if ( isset($_SESSION['user']) ){
-            $id = $_SESSION['user']->id;
-            $uuid = $_SESSION['user']->uuid;
-
-            $this->fetchAll("UPDATE `user` SET `last_update` = now() WHERE `id` = '$id'");
-            $s = $this->fetchAll("SELECT * FROM user WHERE `id` = '$id'")[0];
-            $s->gravatar = $this->gravatar($s->email);
-            $s->acl = json_decode($s->acl);
-            $s->uuid = $uuid;
-            unset($s->password);
-            $_SESSION['user'] = $s;
-        }
-    }
-
     // ACCESS =========================================================
     public function policy($acl) {
         global $_SESSION;
         return (isset($_SESSION['user']) && isset($_SESSION['user']->policy->$acl) )?$_SESSION['user']->policy->$acl:false;
     }
 
-    public function get_json($decode = false)
-    {
-        $putjson = fopen("php://input", "r");
-        $json = "";
-        while (!feof($putjson))
-            $json .=fgets($putjson);
-        fclose($putjson);
-        if (!$decode)
-            return $json;
-        else
-            return json_decode($json);
-    }
+
 
     function ossl( $string, $action = 'enc' ) {
         // you may change these values to your own
@@ -255,3 +169,48 @@ class FireWorks{
     }
 
 }
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+
+// Get JSON from tmp ===============================================
+function json_get($decode = false)
+{
+  $putjson = fopen("php://input", "r");
+  $json = "";
+  while (!feof($putjson)){
+    $json .=fgets($putjson);
+  }
+  fclose($putjson);
+  if (!$decode){
+    return $json;
+  }else{
+    return json_decode($json);
+  }
+}
+
+// SQL Injection ===================================================
+function sql_inj($value)
+{
+  $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
+  $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
+  return str_replace($search, $replace, $value);
+}
+
+// LOG =============================================================
+function logs($msg)
+{
+  global $_SESSION;
+  $date = date("Y-m-d H:i:s");
+  $user = isset($_SESSION['user']) ? $_SESSION['user']->username : "";
+  $ip   = $_SERVER['REMOTE_ADDR'];
+  
+  $mylog = fopen("../logs.txt", "a") or die();
+  fwrite($mylog, "\n$date | $user | $ip | $msg");
+  fclose($mylog);
+}
+
+

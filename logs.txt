@@ -1,0 +1,13 @@
+
+2018-10-14 22:44:43 |  | 127.0.0.1 | /ogcom/api/?signin
+2018-10-14 22:44:43 | hbendali | 127.0.0.1 | /ogcom/api/?session
+2018-10-14 22:44:52 | hbendali | 127.0.0.1 | /ogcom/api/?signout
+2018-10-14 22:44:52 |  | 127.0.0.1 | /ogcom/api/?session
+2018-10-14 22:44:57 |  | 127.0.0.1 | /ogcom/api/?signin
+2018-10-14 22:44:57 | hbendali | 127.0.0.1 | /ogcom/api/?session
+2018-10-15 08:16:14 | hbendali | 127.0.0.1 | /ogcom/api/?signout
+2018-10-15 08:16:14 |  | 127.0.0.1 | /ogcom/api/?session
+2018-10-15 08:16:30 |  | 127.0.0.1 | /ogcom/api/?signin
+2018-10-15 08:16:30 | hbendali | 127.0.0.1 | /ogcom/api/?session
+2018-10-15 08:16:32 | hbendali | 127.0.0.1 | /ogcom/api/?signout
+2018-10-15 08:16:32 |  | 127.0.0.1 | /ogcom/api/?session

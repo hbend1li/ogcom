@@ -28,9 +28,6 @@ ACL can get true, false, signin or defined name
       "purchase": true,  
       "sale": true  
     }  
-  
-### MySQL  
-  
 
 
   
