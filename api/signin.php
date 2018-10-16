@@ -10,20 +10,20 @@ if (isset($_GET['signin']))
   $result   = $fw->fetchAll("SELECT * FROM user WHERE ( username='$username' OR email='$username' ) AND password='$password'");
   if (count($result)>0){
     $_SESSION['user'] = $result[0];
-    unset($_SESSION['user']->password);
-    signin();
-    $return = true;
+    $_SESSION['user']->acl = json_decode($_SESSION['user']->acl);
+    if (isset ($_SESSION['user']->acl->enable) && $_SESSION['user']->acl->enable === true){
+      unset($_SESSION['user']->password);
+      signin();
+      $return = true;
+    }else{
+      $_SESSION['user'] = null;
+      unset($_SESSION['user']);
+      }
   }else{
     $_SESSION['user'] = null;
     unset($_SESSION['user']);
   }
 
-  // if ( isset($json->email) && ($json->email != "") && isset($json->password) && ($json->password != "") )
-  //   if ($fw->signin( $json->email, $json->password ) ){
-  //     $return = true;
-  //   }
-  // else
-  //   $ret = $fw->signin();
 }
 
 die(json_encode($return)); ?>

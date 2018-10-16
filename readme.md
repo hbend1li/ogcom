@@ -3,22 +3,23 @@
   
 ### ACL  
   
-ACL can get true, false, signin or defined name  
+ACL can get true, false, enable or defined name  
   
 #### ex  
 
     {  
       ...  
-      "acl":true,  
-      "acl":false,  
-      "acl":"signin",  
-      "acl":"beta_test",  
+      "acl":true,         // disable element  
+      "acl":false,        // enable element for every one 
+      "acl":"enable",     // enable if user is signein 
+      "acl":"beta_test",  // enable if user have permision 
       ...  
     }  
   
 #### prototype
   
-    {  
+    { 
+      "enable": true,
       "admin": true,  
       "beta": true,  
       "debug": true,  
